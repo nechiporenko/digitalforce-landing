@@ -1,0 +1,73 @@
+﻿@import "../../modules/_base.scss";
+/* Desktop Menu */
+.h-menu{
+    @extend .g-clearlist;
+    float:right;
+    font-size:0;
+    display:none;
+
+    @include media($desktop){
+        display:block;
+        margin:10px 15px 0 0;
+    }
+}
+
+.h-menu__item{
+    display:inline-block;
+    vertical-align:middle;
+    margin:0 15px;
+    font-size:rem(17px);
+    white-space:nowrap;
+}
+
+.h-menu__link{
+    display:block;
+
+    &.current{
+        cursor:default;
+    }
+}
+
+.h-menu__link,
+.h-lang--link{
+    height:41px;
+    line-height:41px;
+    color:#fff;
+    text-decoration:none;
+
+    &:hover,
+    &:active,
+    &.current{
+        color:$primary;
+    }
+}
+
+@include media($large){
+    .h-menu{
+        margin-right:25px;
+    }
+    .h-menu__item{
+        margin:0 25px;
+    }
+}
+
+/*Desktop Menu Lang Switcher*/
+.h-lang{
+    display:inline-block;
+    height:41px;
+    line-height:41px;
+}
+.h-lang--current{
+    color:#fff;
+}
+.h-lang--link{
+    transition-property:opacity, color;
+    opacity:.4;
+
+    &:hover,
+    &:active,
+    &:focus{
+        opacity:1;
+        color:$primary;
+    }
+}

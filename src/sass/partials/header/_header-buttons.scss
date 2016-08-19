@@ -1,0 +1,40 @@
+﻿@import "../../modules/_base.scss";
+/*Header buttons*/
+.b-header__btn{
+    @extend .g-clearbutton;
+    height:36px;
+    line-height:36px;
+    float:right;
+    margin-left:3px;
+    color:$primary;
+    box-shadow:inset 0 0 2px 1px $primary;
+    border-radius:3px;
+
+    &:hover,
+    &:active{
+        background:$primary;
+        color:#fff;
+    }
+}
+
+.b-header__btn--order{
+    padding:0 10px;
+}
+
+.b-header__btn--menu{
+    width:36px;
+}
+
+@include media($desktop){
+    .b-header__btn--menu{
+        display:none;
+    }
+    .b-header__btn--order{
+        margin:10px 0 0 0;
+        padding:0 30px;
+        height:41px;
+        line-height:41px;
+        font-size:rem(18px);
+        border-radius:41px;
+    }
+}

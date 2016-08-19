@@ -1,0 +1,88 @@
+﻿@import "_base.scss";
+/*Animations*/
+.animated{
+    @include animation-duration(1s);
+    @include animation-fill-mode(both);
+}
+.fade-in{
+    @include animation-name(fade-in);
+}
+
+@include keyframes(fade-in){
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+    opacity: 1;
+    }
+}
+
+.fade-in-left{
+    @include animation-name(fade-in-left);
+}
+
+@include keyframes(fade-in-left){
+    0%{
+        opacity:0;
+        @include transform(translate3d(-10px, 0, 0));
+    }
+    100%{
+        opacity:1;
+        @include transform(none);
+    }
+}
+
+.fade-in-right{
+    @include animation-name(fade-in-right);
+}
+
+@include keyframes(fade-in-right){
+    0%{
+        opacity:0;
+        @include transform(translate3d(10px, 0, 0));
+    }
+    100%{
+        opacity:1;
+        @include transform(none);
+    }
+}
+
+.fade-in-up{
+    @include animation-name(fade-in-up);
+}
+
+@include keyframes(fade-in-up){
+    0%{
+        opacity:0;
+        @include transform(translate3d(0, 20px, 0));
+    }
+    100%{
+        opacity:1;
+        @include transform(none);
+    }
+}
+
+
+
+@include keyframes(ripple-out){
+    100% {
+        top: -17px;
+        right: -17px;
+        bottom: -17px;
+        left: -17px;
+        opacity: 1;
+    }
+}
+
+
+
+@include keyframes(buzz){
+    50% {
+        @include transform(translateX(3px) rotate(2deg));
+  }
+
+  100% {
+        @include transform(translateX(-3px) rotate(-2deg));
+  }
+}
