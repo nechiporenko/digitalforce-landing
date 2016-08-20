@@ -26,14 +26,6 @@
         height:100%;
         background:rgba(#0f0c0b, .75);
     }
-
-    @include media($tablet){
-        background-image:url(../img/hero-md.jpg);
-    }
-
-    @include media($large){
-        background-image:url(../img/hero-xl.jpg);
-    }
 }
 
 .b-hero__container{
@@ -44,16 +36,6 @@
     overflow:hidden;
     position:relative;
     z-index:1; //поверх маски
-
-    @include media($desktop){
-        padding-top:90px;
-        padding-bottom:90px;
-    }
-
-    @include media($extra-large){
-        padding-top:120px;
-        padding-bottom:120px;
-    }
 }
 
 .b-hero__list{
@@ -75,6 +57,14 @@
 .b-hero__content{
     width:100%;
     position:relative;
+    line-height:1.2;
+    font-size:rem(14px);
+    position:relative;
+
+    .btn-more__caption{
+        color:#fff;
+        border-bottom-color:#fff;
+    }
 }
 
 .no-flexbox{
@@ -87,5 +77,94 @@
     .b-hero__content{
         display:table-cell;
         vertical-align:middle;
+    }
+}
+
+.b-hero__title{
+    display:block;
+    color:#fff;
+    margin-bottom:0;
+    font-size:rem(18px);
+}
+
+.b-hero__more{//скрытый текст
+    position:absolute;
+    top:100%; left:0;
+    width:100%;
+    font-size:rem(14px);
+    backface-visibility:hidden;
+    visibility:hidden;
+
+    p{
+        margin:10px 0;
+    }
+}
+
+@include media($mobile){
+    .b-hero__title{
+        font-size:rem(20px);
+    }
+    .b-hero__content{
+        font-size:rem(15px);
+    }
+}
+
+@include media($small){
+    .b-hero__title{
+        font-size:rem(24px);
+    }
+    .b-hero__content{
+        font-size:rem(17px);
+    }
+}
+
+@include media($tablet){
+    .b-hero__inner{
+        background-image:url(../img/hero-md.jpg);
+    }
+    .b-hero__title{
+        font-size:rem(32px);
+    }
+    .b-hero__content{
+        font-size:rem(20px);
+    }
+    .b-hero__more{
+        font-size:rem(16px);
+    }
+}
+
+@include media($desktop){
+    .b-hero__container{
+        padding-top:90px;
+        padding-bottom:90px;
+    }
+    .b-hero__title{
+        font-size:rem(50px);
+    }
+    .b-hero__content{
+        font-size:rem(32px);
+    }
+}
+
+@include media($large){
+    .b-hero__inner{
+        background-image:url(../img/hero-xl.jpg);
+    }
+    .b-hero__title{
+        font-size:rem(60px);
+    }
+    .b-hero__content{
+        font-size:rem(36px);
+    }
+    .b-hero__more{
+        width:75%;
+        font-size:rem(18px);
+    }
+}
+
+@include media($extra-large){
+    .b-hero__container{
+        padding-top:110px;
+        padding-bottom:110px;
     }
 }

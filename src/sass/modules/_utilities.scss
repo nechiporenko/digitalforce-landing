@@ -66,6 +66,10 @@ img.g-full-width{clear:both;display:block;width:100%;height:auto;margin:0 0 0 0;
     @include media($desktop){
         font-size:rem(16px);
     }
+
+    @include media($large){
+        font-size:rem(18px);
+    }
 }
 
 .g-shadow-hover{

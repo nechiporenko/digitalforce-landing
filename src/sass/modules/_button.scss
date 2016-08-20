@@ -23,19 +23,19 @@
 }
 
 .g-btn{
-    height:2*$project-line-height;
-    line-height:2*$project-line-height;
-    padding:0 30px;
-    color:#fff;
-    font-size:rem($project-font-size);
-    background: $primary;
-    border-radius:$border-radius;
+    height:54px;
+    line-height:54px;
+    padding:0 15px;
+    color:$primary;
+    font-size:rem(17px);
+    box-shadow: inset 0 0 2px 1px $primary;
+    border-radius:3px;
 
     &:hover,
-    &:focus,
     &:active{
         color:#fff;
-        box-shadow:inset 2px 2px 30px darken($primary, 20%);
+        background:$primary;
+        box-shadow:0 1px 2px 4px rgba(#000, .15);
     }
 
     &:disabled{
@@ -43,6 +43,57 @@
         box-shadow:none;
         transform:none;
     }
+
+    @include media($desktop){
+        height:58px;
+        line-height:58px;
+        padding:0 75px;
+        border-radius:58px;
+    }
+}
+
+/*Load more button*/
+.btn-more{
+    @extend .g-clearbutton;
+    padding-right:34px;
+    height:23px;
+    line-height:30px;
+    font-size:0;
+    position:relative;
+
+    &:hover,
+    &:active,
+    &:focus{
+        .btn-more__caption{
+            color:$primary;
+            border-bottom-color:$primary;
+        }
+    }
+}
+.btn-more__caption{
+    display:inline-block;
+    line-height:1.1;
+    font-size:rem(15px);
+    border-bottom:1px dotted $text-color;
+    @extend .g-transition;
+    transition-property:color, border-color;
+
+    @include media($small){
+        font-size:rem(18px);
+        border-bottom-width:2px;
+    }
+}
+.btn-more__arrow{
+    display:block;
+    @include size(23px);
+    position:absolute;
+    top:0; right:0;
+    line-height:23px;
+    text-align:center;
+    font-size:rem(10px);
+    color:$primary;
+    box-shadow:inset 0 0 1px 1px $primary;
+    border-radius:50%;
 }
 
 

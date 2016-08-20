@@ -1,5 +1,31 @@
 ﻿@import "../modules/_base.scss";
 
+/*Page Sections*/
+.page__section{
+    padding:35px 0;
+    @extend .g-resp-text;
+    min-height:600px; //удалить после отладки!
+
+    @include media($tablet){
+        padding:45px 0;
+    }
+
+    @include media($desktop){
+        padding:50px 0;
+    }
+
+    @include media($large){
+        padding:60px 0;
+    }
+
+    @include media($extra-large){
+        padding:90px 0;
+    }
+}
+
+.page__section--alt{
+    background:$bg-alt-color;
+}
 
 @import "page/_hero.scss";
 

@@ -65,14 +65,37 @@ html{
 h1, h2, h3, h4, h5, h6, .g-title, .g-subtitle{
   margin-top: 0;
   margin-bottom: 30px;
-  line-height:1.2;
+  line-height:1.15;
   color:$title-color;
   font-family:$font-title;
   font-weight:300;
 }
 .g-title{
     display:block;
-    font-size:rem(2*$project-font-size);
+    padding-bottom:12px;
+    margin-bottom:35px;
+    text-align:center;
+    font-size:rem(34px);
+    position:relative;
+
+    &:after{
+        content:'';
+        position:absolute;
+        top:100%;
+        left:50%;
+        width:68px;
+        height:2px;
+        margin-left:-34px;
+        background:$primary;
+    }
+
+    @include media($tablet){
+        font-size:40px;
+    }
+
+    @include media($desktop){
+        font-size:45px;
+    }
 }
 
 .g-subtitle{
