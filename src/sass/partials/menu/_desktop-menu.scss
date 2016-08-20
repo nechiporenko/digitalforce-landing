@@ -5,11 +5,6 @@
     float:right;
     font-size:0;
     display:none;
-
-    @include media($desktop){
-        display:block;
-        margin:10px 15px 0 0;
-    }
 }
 
 .h-menu__item{
@@ -38,7 +33,22 @@
     &:hover,
     &:active,
     &.current{
-        color:$primary;
+        color:$primary !important;
+    }
+}
+
+
+@include media($desktop){
+    .h-menu{
+        display:block;
+        margin:10px 15px 0 0;
+    }
+
+    .scrolled{
+        .h-menu__link,
+        .h-lang{
+            color:$text-color;
+        }
     }
 }
 

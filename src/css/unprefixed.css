@@ -440,7 +440,7 @@ hr {
 
 /* Transitions */
 .g-transition, a, button, input[type="button"], input[type="submit"],
-input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], input:not([type]), textarea, select, .btn-more__caption, .bx-wrapper .bx-controls-direction a {
+input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], input:not([type]), textarea, select, .btn-more__caption, .b-header, .page__scroll, .bx-wrapper .bx-controls-direction a {
   transition-duration: .15s;
   transition-timing-function: ease-in;
 }
@@ -1161,6 +1161,7 @@ input[type="radio"] {
   background: #fff;
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition-property: background, box-shadow, padding;
 }
 
 @media screen and (min-width: 62em) {
@@ -1172,6 +1173,7 @@ input[type="radio"] {
   .b-header.scrolled {
     background: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 8px 0;
   }
 }
 
@@ -1247,13 +1249,6 @@ input[type="radio"] {
   display: none;
 }
 
-@media screen and (min-width: 62em) {
-  .h-menu {
-    display: block;
-    margin: 10px 15px 0 0;
-  }
-}
-
 .h-menu__item {
   display: inline-block;
   vertical-align: middle;
@@ -1282,7 +1277,18 @@ input[type="radio"] {
 .h-lang--link:hover,
 .h-lang--link:active,
 .h-lang--link.current {
-  color: #8ace38;
+  color: #8ace38 !important;
+}
+
+@media screen and (min-width: 62em) {
+  .h-menu {
+    display: block;
+    margin: 10px 15px 0 0;
+  }
+  .scrolled .h-menu__link,
+  .scrolled .h-lang {
+    color: #000;
+  }
 }
 
 @media screen and (min-width: 75em) {
@@ -1537,8 +1543,7 @@ input[type="radio"] {
   bottom: 10px;
   opacity: .5;
   transition-property: opacity, transform;
-  transition-duration: .3s;
-  transition-timing-function: ease;
+  border-radius: 3px;
   z-index: 1000;
   cursor: pointer;
   display: none;

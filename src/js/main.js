@@ -1,8 +1,62 @@
 ﻿// Custom scripts:
 // Если браузер не знает о плейсхолдерах в формах
 jQuery(document).ready(function ($) {
-    
+    //
+    // Меняем класс хидера и показываем кнопку скролла страницы
+    //---------------------------------------------------------------------------------------
+    (function () {
+        var $scroller = $('<button type="button" class="page__scroll"><i class="icon-up"></i></button>'),
+            $header = $('.b-header'),
+            isHeaderVisible = false,//флаг состояния
+            isScrollerVisible = false,
+            scrolledClass = 'scrolled', //клас для непрозрачного хидера
+            method = {};
 
+        $('body').append($scroller);
+
+        method.showHeader = function () {
+            $header.addClass(scrolledClass);
+            isHeaderVisible = true;
+        };
+
+        method.hideHeader = function () {
+            $header.removeClass(scrolledClass);
+            isHeaderVisible = false;
+        };
+
+        method.showScroller = function () {
+            $scroller.show();
+            isScrollerVisible = true;
+        };
+
+        method.hideScroller = function () {
+            $scroller.hide();
+            isScrollerVisible = false;
+        };
+
+        method.checkState = function () {
+            var fromTop = $.scrollY();//см. плагин verge.js
+            if (fromTop >= 100 && !isHeaderVisible) {
+                method.showHeader();
+            } else if (fromTop < 100 && isHeaderVisible) {
+                method.hideHeader();
+            };
+
+            if (fromTop >= 500 && !isScrollerVisible) {
+                method.showScroller();
+            } else if (fromTop < 500 && isScrollerVisible) {
+                method.hideScroller();
+            };
+        };
+
+        method.checkState();
+
+        $(window).bind('scroll', method.checkState);
+
+        $scroller.on('click', function () {
+            $('html, body').animate({ scrollTop: 0 }, 800);
+        });
+    })();
     
     //
     // Если браузер не знает о плейсхолдерах в формах

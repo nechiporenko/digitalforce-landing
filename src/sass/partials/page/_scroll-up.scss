@@ -13,8 +13,8 @@
     bottom:10px;
     opacity:.5;
     transition-property:opacity, transform;
-    transition-duration:.3s;
-    transition-timing-function:ease;
+    @extend .g-transition;
+    border-radius:3px;
     z-index:1000;
     cursor:pointer;
     display:none; //покажем скриптом

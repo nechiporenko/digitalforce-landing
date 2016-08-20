@@ -11,6 +11,8 @@
     background:#fff;
     z-index:1000;
     box-shadow:0 2px 4px rgba(#000, .2);
+    @extend .g-transition;
+    transition-property:background, box-shadow, padding;
 
     @include media($desktop){
         padding:15px 0;
@@ -20,6 +22,7 @@
         &.scrolled{
             background:#fff;
             box-shadow:0 2px 4px rgba(#000, .2);
+            padding:8px 0;
         }
     }
 
