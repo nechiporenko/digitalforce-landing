@@ -1,7 +1,7 @@
 ﻿@import "../../modules/_base.scss";
 /*Hero slider*/
 .b-hero{
-    height:100vh;
+    height:calc(100vh - 46px);
     min-height:450px;
     max-height:933px;
     background-color:#0f0c0b;
@@ -134,6 +134,9 @@
 }
 
 @include media($desktop){
+    .b-hero{
+        height:100vh;
+    }
     .b-hero__container{
         padding-top:90px;
         padding-bottom:90px;

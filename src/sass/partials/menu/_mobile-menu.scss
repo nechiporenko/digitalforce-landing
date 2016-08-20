@@ -1,2 +1,85 @@
 ﻿@import "../../modules/_base.scss";
 /*Mobile Menu*/
+.page__panel{
+    position:fixed;
+    width:256px;
+    height:100%;
+    top:0;
+    left:-256px;
+    z-index:3300;//поверх оверлея
+    overflow-x:hidden;
+    overflow-y:auto;
+    will-change:left;
+    transition:left .3s ease;
+    @include linear-gradient(to bottom, #2d2d2d, #161616);
+
+    @include media($desktop){
+        display:none;
+    }
+
+    &.active{
+        left:0;
+    }
+}
+
+.m-menu{
+    @extend .g-clearlist;
+}
+
+.m-menu__item{
+    display:block;
+    padding:9px 12px;
+    font-size:rem(17px);
+    border-top:1px solid #808080;
+    border-bottom:1px solid #000;
+    box-sizing:border-box;
+
+    &:first-child{
+        padding:12px;
+        border-top:none;
+    }
+}
+
+.m-menu__link{
+    display:block;
+    color:#fff;
+    line-height:1.15;
+    text-decoration:none;
+
+    &:hover,
+    &.current{
+        color:$primary;
+    }
+}
+
+
+.m-menu__label{
+    display:block;
+    font-size:rem(18px);
+    color:$primary;
+    text-transform:uppercase;
+    box-sizing:border-box;
+    cursor:pointer;
+    outline:0;
+
+    &:after{
+        content:'\e900';
+        font-family:'icomoon';
+        position:absolute;
+        right:12px;
+    }
+}
+
+.m-lang--current{
+    color:#fff;
+}
+
+.m-lang--link{
+    text-decoration:none;
+    color:$placeholder-color;
+
+    &:hover,
+    &:active{
+        color:$primary;
+    }
+}

@@ -1,8 +1,9 @@
 @import "../modules/base";
 
-
-
 /*Site Header*/
+.page{
+    padding-top:46px;
+}
 .b-header{
     padding:5px 0;
     width:100%;
@@ -13,8 +14,13 @@
     box-shadow:0 2px 4px rgba(#000, .2);
     @extend .g-transition;
     transition-property:background, box-shadow, padding;
+}
 
-    @include media($desktop){
+@include media($desktop){
+    .page{
+        padding-top:0;
+    }
+    .b-header{
         padding:15px 0;
         background:none;
         box-shadow:none;
@@ -22,11 +28,13 @@
         &.scrolled{
             background:#fff;
             box-shadow:0 2px 4px rgba(#000, .2);
-            padding:8px 0;
+            padding:8px 0 !important;
         }
     }
+}
 
-    @include media($extra-large){
+@include media($extra-large){
+    .b-header{
         padding:30px 0;
     }
 }

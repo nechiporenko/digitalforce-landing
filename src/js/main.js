@@ -57,6 +57,112 @@ jQuery(document).ready(function ($) {
             $('html, body').animate({ scrollTop: 0 }, 800);
         });
     })();
+
+    //
+    // Покажем - спрячем моб.меню
+    //---------------------------------------------------------------------------------------
+    (function () {
+        var $btn = $('.js-mmenu-toggle'), //кнопка toggle
+            $menu = $('.js-mmenu'), //панель меню
+            $body = $('body'),
+            activeClass = 'active',
+            method = {};
+
+        method.hideMenu = function () {
+            $btn.removeClass(activeClass);
+            $menu.removeClass(activeClass);
+            $body.css('overflow', 'auto');
+            method.removeOverlay();
+        };
+
+        method.showMenu = function () {
+            $btn.addClass(activeClass);
+            $menu.addClass(activeClass);
+            $body.css('overflow', 'hidden');
+            method.addOverlay();
+        };
+
+        method.addOverlay = function () {
+            $body.append('<div id="overlay" class="page__overlay"></div>');
+            $('#overlay').bind('click', method.hideMenu);
+        };
+
+        method.removeOverlay = function () {
+            $('#overlay').unbind('click', method.hideMenu).remove();
+        };
+
+        $('.b-header').on('click', '.js-mmenu-toggle', function () {//покажем - спрячем панель моб.меню
+            if ($(this).hasClass(activeClass)) {
+                method.hideMenu();
+            } else {
+                method.showMenu();
+            };
+        });
+
+        $menu.on('click', '.m-menu__label', method.hideMenu); //закроем панель по клику по заголовку
+    })();
+
+    //
+    // Навигация по секциям
+    //---------------------------------------------------------------------------------------
+    (function () {
+        var $menu = $('.h-menu, .m-menu'),
+            $menu_link = $menu.find('.h-menu__link, .m-menu__link'),
+            $sections = $('.js-section'),
+            currentClass = 'current',
+            BREAKPOINT = 992, //при этом разрешении экрана при скролле хидер меняет высоту
+            firstSectionID = '#about', //id первой секции
+            method = {};
+
+        method.changeLinkState = function (el) {//находим и подсвечиваем линк в хидере и пейджере
+            $menu_link.removeClass(currentClass);
+            var $current = $menu.find('a[href^="#' + el + '"]');
+            $current.addClass(currentClass);
+        };
+
+        method.checkHeaderOffset = function (el) {//рассчитаем высоту хидера
+            var fromTop = 46, //высота хидера на мобильных
+                winW = $.viewportW();
+
+            if (winW >= BREAKPOINT) {
+                fromTop = 73; //высота хидера при скролле на десктопе
+
+                if (el.attr('href') === firstSectionID) {//если идем в начало
+                    fromTop = 0;
+                }
+            };
+            return fromTop;
+        };
+
+        method.scrollToContent = function (el) {//плавный скролл к секции по клику на линк с учетом высоты хидера
+            $('html,body').animate({ scrollTop: $($(el).attr('href')).offset().top - method.checkHeaderOffset(el) }, 800);
+        };
+
+        $menu.on('click', '.h-menu__link, .m-menu__link', function (e) {//перехватываем клик по линку в хидере
+            e.preventDefault();
+            var $el = $(this);
+            if ($el.hasClass(currentClass)) {
+                return false;
+            } else {
+                method.scrollToContent($el);
+            };
+        });
+
+        var waypoints = $sections.waypoint({//подключили плагин
+            handler: function (direction) {
+                var prev = this.previous();//предыдущая секция
+
+                if (direction === 'down') {//скроллим вниз
+                    method.changeLinkState(this.element.id);
+                };
+                if (direction === 'up') { //если скроллим вверх - подсвечиваем предыдущую секцию
+                    method.changeLinkState(prev.element.id);
+                };
+            },
+            group: 'section',
+            offset: '35%'
+        });
+    })();
     
     //
     // Если браузер не знает о плейсхолдерах в формах
