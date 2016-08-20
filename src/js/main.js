@@ -163,6 +163,59 @@ jQuery(document).ready(function ($) {
             offset: '35%'
         });
     })();
+
+    //
+    // HERO=slider
+    //---------------------------------------------------------------------------------------
+    (function () {
+        var $hero = $('.b-hero'),
+            $slider = $hero.find($('.js-hero-slider')),
+            slider = $slider,
+            activeClass = 'active',
+            $content = $slider.find('.b-hero__content'),//будем анимировать при смене слайдов
+            method = {};
+
+        method.hover = function () {//фикс
+            $hero.on('mouseenter', '.bx-pager, .bx-prev, .bx-next', function () {
+                slider.stopAuto();
+            }).on('mouseleave', '.bx-pager, .bx-prev, .bx-next', function () {
+                slider.startAuto();
+            });
+        };
+
+        method.showMore = function (el) {
+            el.addClass(activeClass).next('.b-hero__more').addClass('animated fade-in-up');
+        };
+
+        slider.bxSlider({
+            auto: true,
+            pause: 8000,
+            mode: 'fade',
+            autoHover: true,
+            slideMargin: 10,
+            nextText: '<i class="icon-right"></i>',
+            prevText: '<i class="icon-left"></i>',
+            onSliderLoad: function (currentIndex) {
+                $content.addClass('js-slider-animate').filter(':first').addClass(activeClass);//запускаем анимацию
+                method.hover();//фикс для слайдера
+            },
+            onSlideBefore: function ($slideElement) {
+                $content.removeClass(activeClass);
+            },
+            onSlideAfter: function ($slideElement) {
+                $slideElement.find('.b-hero__content').addClass(activeClass);
+            }
+        });
+
+        $slider.on('click', '.btn-more', function () {
+            var $el = $(this);
+            if ($el.hasClass(activeClass)) {
+                return false;
+            } else {
+                method.showMore($el);
+            };
+        });
+    })();
     
     //
     // Если браузер не знает о плейсхолдерах в формах

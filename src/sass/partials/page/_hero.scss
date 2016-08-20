@@ -8,6 +8,11 @@
     position:relative;
     overflow:hidden;
     color:#fff;
+
+    .bx-wrapper,
+    .bx-viewport{
+        height:100% !important;
+    }
 }
 
 .b-hero__inner{
@@ -64,6 +69,15 @@
     .btn-more__caption{
         color:#fff;
         border-bottom-color:#fff;
+    }
+
+    .btn-more.active{
+        cursor:default;
+
+        .btn-more__caption{
+            color:$primary;
+            border-bottom-color:$primary;
+        }
     }
 }
 
@@ -153,6 +167,9 @@
     .b-hero__inner{
         background-image:url(../img/hero-xl.jpg);
     }
+    .b-hero__container{
+        overflow:visible;
+    }
     .b-hero__title{
         font-size:rem(60px);
     }
@@ -169,5 +186,27 @@
     .b-hero__container{
         padding-top:110px;
         padding-bottom:110px;
+    }
+}
+
+//анимация
+@include media($desktop){ //на мобилках - не будем мучать браузер
+    .js-slider-animate{
+        .b-hero__title,
+        & > p{
+            transition-property:opacity, transform;
+            transition-timing-function:linear;
+            transition-duration:1s;
+            opacity:0.2;
+            transform:translateX(10px);
+        }
+
+        &.active{
+            .b-hero__title,
+            & > p{
+                transform:translateX(0);
+                opacity:1;
+            }
+        }
     }
 }

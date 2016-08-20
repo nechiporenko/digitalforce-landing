@@ -3,6 +3,7 @@
 .animated{
     @include animation-duration(1s);
     @include animation-fill-mode(both);
+    visibility:visible;
 }
 .fade-in{
     @include animation-name(fade-in);

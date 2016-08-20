@@ -47,7 +47,7 @@
         <div class="b-hero js-section" id="about">
             <div class="b-hero__inner">
                 <div class="b-hero__container">
-                    <ul class="b-hero__list">
+                    <ul class="b-hero__list js-hero-slider">
                         <li class="b-hero__item">
                             <figure class="b-hero__wrapper">
                                 <figcaption class="b-hero__content">
@@ -103,6 +103,18 @@
                     </ul>
                 </div>
             </div>
+            <script>
+            (function () {
+                //подготовим первый слайд к анимации текстового контента
+                var el = document.getElementsByClassName('b-hero__content')[0],
+                    className = 'js-slider-animate';
+                if (el.classList) {
+                    el.classList.add(className);
+                } else {
+                    el.className += ' ' + className;
+                }
+            })();
+            </script>
         </div>
         <!--About Us-->
 

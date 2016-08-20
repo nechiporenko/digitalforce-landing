@@ -14,7 +14,7 @@
         <div class="b-hero js-section" id="about">
             <div class="b-hero__inner">
                 <div class="b-hero__container">
-                    <ul class="b-hero__list">
+                    <ul class="b-hero__list js-hero-slider">
                         <li class="b-hero__item">
                             <figure class="b-hero__wrapper">
                                 <figcaption class="b-hero__content">
@@ -70,6 +70,18 @@
                     </ul>
                 </div>
             </div>
+            <script>
+            (function () {
+                //подготовим первый слайд к анимации текстового контента
+                var el = document.getElementsByClassName('b-hero__content')[0],
+                    className = 'js-slider-animate';
+                if (el.classList) {
+                    el.classList.add(className);
+                } else {
+                    el.className += ' ' + className;
+                }
+            })();
+            </script>
         </div>
         <!--About Us-->
 
@@ -106,32 +118,7 @@
         <!--/Portfolio-->
 
         <!--Mobile Menu-->
-        <nav class="page__panel js-mmenu">
-            <ul class="m-menu">
-                <li class="m-menu__item">
-                    <label class="m-menu__label">Menu</label>
-                </li>
-                <li class="m-menu__item">
-                    <a href="#about" class="m-menu__link">About Us</a>
-                </li>
-                <li class="m-menu__item">
-                    <a href="#services" class="m-menu__link">Services</a>
-                </li>
-                <li class="m-menu__item">
-                    <a href="#portfolio" class="m-menu__link">Portfolio</a>
-                </li>
-                <li class="m-menu__item">
-                    <a href="#team" class="m-menu__link">Team</a>
-                </li>
-                <li class="m-menu__item">
-                    <a href="#contacts" class="m-menu__link">Contacts</a>
-                </li>
-                <li class="m-menu__item">
-                    <span class="m-lang m-lang--current">Eng</span><a href="#" hreflang="ru" class="m-lang m-lang--link">&nbsp;/&nbsp;Rus</a>
-                </li>
-            </ul>
-        </nav>
-        <!--/Mobile Menu-->
+        @@include('templates/mobile-menu.html')
     </main>
 	<!--/MAIN CONTENT-->
 

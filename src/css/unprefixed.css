@@ -440,7 +440,7 @@ hr {
 
 /* Transitions */
 .g-transition, a, button, input[type="button"], input[type="submit"],
-input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], input:not([type]), textarea, select, .btn-more__caption, .b-header, .page__scroll, .bx-wrapper .bx-controls-direction a {
+input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], input:not([type]), textarea, select, .btn-more__caption, .b-header, .page__scroll, .bx-controls-direction a {
   transition-duration: .15s;
   transition-timing-function: ease-in;
 }
@@ -1453,6 +1453,11 @@ input[type="radio"] {
   color: #fff;
 }
 
+.b-hero .bx-wrapper,
+.b-hero .bx-viewport {
+  height: 100% !important;
+}
+
 .b-hero__inner {
   position: absolute;
   top: 0;
@@ -1510,6 +1515,15 @@ input[type="radio"] {
 .b-hero__content .btn-more__caption {
   color: #fff;
   border-bottom-color: #fff;
+}
+
+.b-hero__content .btn-more.active {
+  cursor: default;
+}
+
+.b-hero__content .btn-more.active .btn-more__caption {
+  color: #8ace38;
+  border-bottom-color: #8ace38;
 }
 
 .no-flexbox .b-hero__wrapper {
@@ -1597,6 +1611,9 @@ input[type="radio"] {
   .b-hero__inner {
     background-image: url(../img/hero-xl.jpg);
   }
+  .b-hero__container {
+    overflow: visible;
+  }
   .b-hero__title {
     font-size: 3.75rem;
   }
@@ -1613,6 +1630,22 @@ input[type="radio"] {
   .b-hero__container {
     padding-top: 110px;
     padding-bottom: 110px;
+  }
+}
+
+@media screen and (min-width: 62em) {
+  .js-slider-animate .b-hero__title,
+  .js-slider-animate > p {
+    transition-property: opacity, transform;
+    transition-timing-function: linear;
+    transition-duration: 1s;
+    opacity: 0.2;
+    transform: translateX(10px);
+  }
+  .js-slider-animate.active .b-hero__title,
+  .js-slider-animate.active > p {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
@@ -1657,17 +1690,17 @@ input[type="radio"] {
   -webkit-transform: translatez(0);
 }
 
-.bx-wrapper .bx-pager,
-.bx-wrapper .bx-controls-auto {
+.bx-pager,
+.bx-controls-auto {
   position: absolute;
-  bottom: 20px;
+  bottom: -20px;
   width: 100%;
   z-index: 60;
 }
 
 .bx-wrapper .bx-loading {
   min-height: 50px;
-  background: url("../img/loader.gif") center center no-repeat #fff;
+  background: url("../img/loader.gif") center center no-repeat;
   height: 100%;
   width: 100%;
   position: absolute;
@@ -1676,7 +1709,7 @@ input[type="radio"] {
   z-index: 2000;
 }
 
-.bx-wrapper .bx-pager {
+.bx-pager {
   text-align: center;
   font-size: .85em;
   font-family: Arial;
@@ -1684,7 +1717,7 @@ input[type="radio"] {
   color: #666;
 }
 
-.bx-wrapper .bx-pager.bx-default-pager a {
+.bx-pager.bx-default-pager a {
   background: #666;
   overflow: hidden;
   text-indent: 101%;
@@ -1697,57 +1730,75 @@ input[type="radio"] {
   border-radius: 50%;
 }
 
-.bx-wrapper .bx-pager.bx-default-pager a:hover, .bx-wrapper .bx-pager.bx-default-pager a.active, .bx-wrapper .bx-pager.bx-default-pager a:focus {
+.bx-pager.bx-default-pager a:hover, .bx-pager.bx-default-pager a.active {
   background: #8ace38;
 }
 
-.bx-wrapper .bx-pager-item,
-.bx-wrapper .bx-controls-auto .bx-controls-auto-item {
+.bx-pager-item,
+.bx-controls-auto .bx-controls-auto-item {
   display: inline-block;
   vertical-align: middle;
 }
 
-.bx-wrapper .bx-pager-item {
+.bx-pager-item {
   font-size: 0;
   line-height: 0;
 }
 
-.bx-wrapper .bx-prev {
-  left: 10px;
+.bx-prev {
+  left: 0;
 }
 
-.bx-wrapper .bx-next {
-  right: 10px;
+.bx-next {
+  right: 0;
 }
 
-.bx-wrapper .bx-controls-direction a {
+.bx-controls-direction a {
   position: absolute;
   top: 50%;
   margin-top: -20px;
-  outline: 0;
   height: 40px;
   width: 40px;
   line-height: 40px;
-  border: 1px solid #f4f4f6;
-  border-radius: 0;
-  color: #8ace38;
-  background: #fff;
-  text-align: center;
-  z-index: 60;
-  opacity: .8;
-  box-sizing: border-box;
-  transition-property: opacity;
-}
-
-.bx-wrapper .bx-controls-direction a:hover, .bx-wrapper .bx-controls-direction a:active {
-  opacity: 1;
-  background: #8ace38;
   color: #fff;
+  font-size: 2.125rem;
+  text-align: center;
+  text-decoration: none;
+  z-index: 60;
+  opacity: .6;
+  transition-property: opacity;
+  display: none;
 }
 
-.bx-wrapper .bx-controls-direction a.disabled {
+.bx-controls-direction a:hover, .bx-controls-direction a:active {
+  opacity: 1;
+  color: #8ace38;
+}
+
+.bx-controls-direction a.disabled {
   opacity: .35;
   cursor: default;
+}
+
+@media screen and (min-width: 75em) {
+  .bx-controls-direction a {
+    display: block;
+  }
+  .bx-prev {
+    left: -50px;
+  }
+  .bx-next {
+    right: -50px;
+  }
+}
+
+@media screen and (min-width: 105em) {
+  .bx-prev {
+    left: -75px;
+  }
+  .bx-next {
+    right: -75px;
+  }
 }
 
 /*Animations*/
@@ -1758,6 +1809,7 @@ input[type="radio"] {
   -webkit-animation-fill-mode: both;
   -moz-animation-fill-mode: both;
   animation-fill-mode: both;
+  visibility: visible;
 }
 
 .fade-in {
