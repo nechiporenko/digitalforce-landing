@@ -14,6 +14,7 @@
     box-shadow:0 2px 4px rgba(#000, .2);
     @extend .g-transition;
     transition-property:background, box-shadow, padding;
+    backface-visibility:hidden;
 }
 
 @include media($desktop){

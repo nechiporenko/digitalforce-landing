@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
-<html class="no-js" lang="ru">
+<html class="no-js" lang="en">
 <head>
-    <title>Frontend Boilerplate</title>
+    <title>Digital Force</title>
     @@include('templates/head.html')
 </head>
 <body class="page">
@@ -11,84 +11,30 @@
 	<!--MAIN CONTENT-->
     <main class="page__content">
         <!--About Us-->
-        <div class="b-hero js-section" id="about">
-            <div class="b-hero__inner">
-                <div class="b-hero__container">
-                    <ul class="b-hero__list js-hero-slider">
-                        <li class="b-hero__item">
-                            <figure class="b-hero__wrapper">
-                                <figcaption class="b-hero__content">
-                                    <span class="b-hero__title">We are web-studio from Ukraine,</span>
-                                    <p>which is an expert in creation SEO-oriented websites</p>
-                                    <button type="button" class="btn-more">
-                                        <span class="btn-more__caption">View more</span>
-                                        <span class="btn-more__arrow">
-                                            <i class="icon-down"></i>
-                                        </span>
-                                    </button>
-                                    <div class="b-hero__more">
-                                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                                    </div>
-                                </figcaption>
-                            </figure>
-                        </li>
-                        <li class="b-hero__item">
-                            <figure class="b-hero__wrapper">
-                                <figcaption class="b-hero__content">
-                                    <span class="b-hero__title">Lorem ipsum dolor sit amet,</span>
-                                    <p>tortor quam, feugiat vitae, ultricies eget, tempor sit amet</p>
-                                    <button type="button" class="btn-more">
-                                        <span class="btn-more__caption">View more</span>
-                                        <span class="btn-more__arrow">
-                                            <i class="icon-down"></i>
-                                        </span>
-                                    </button>
-                                    <div class="b-hero__more">
-                                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                                    </div>
-                                </figcaption>
-                            </figure>
-                        </li>
-                        <li class="b-hero__item">
-                            <figure class="b-hero__wrapper">
-                                <figcaption class="b-hero__content">
-                                    <span class="b-hero__title">Morbi in sem quis dui placerat ornare,</span>
-                                    <p>ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                                    <button type="button" class="btn-more">
-                                        <span class="btn-more__caption">View more</span>
-                                        <span class="btn-more__arrow">
-                                            <i class="icon-down"></i>
-                                        </span>
-                                    </button>
-                                    <div class="b-hero__more">
-                                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                                    </div>
-                                </figcaption>
-                            </figure>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <script>
-            (function () {
-                //подготовим первый слайд к анимации текстового контента
-                var el = document.getElementsByClassName('b-hero__content')[0],
-                    className = 'js-slider-animate';
-                if (el.classList) {
-                    el.classList.add(className);
-                } else {
-                    el.className += ' ' + className;
-                }
-            })();
-            </script>
-        </div>
-        <!--About Us-->
+        @@include('templates/about-us.html')
 
         <!--Services-->
         <section class="page__section js-section" id="services">
             <div class="g-container">
                 <h1 class="g-title">Our Services</h1>
+                <ul class="b-service">
+                    <li class="b-service__item">
+                        <figure class="b-service__inner">
+                            <div class="b-service__thumb"></div>
+                            <figcaption class="b-service__entry js-match-height">
+                                Creating right SEO-structure for your web-site from the very beginning
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="b-service__item">
+                        <figure class="b-service__inner">
+                            <div class="b-service__thumb"></div>
+                            <figcaption class="b-service__entry js-match-height">
+                                We work with CMS-systems: WordPress, OpenCart, Concrete5, custom solutions
+                            </figcaption>
+                        </figure>
+                    </li>
+                </ul>
             </div>
         </section>
         <!--/Services-->

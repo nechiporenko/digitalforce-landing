@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html class="no-js" lang="ru">
+<html class="no-js" lang="en">
 <head>
-    <title>Frontend Boilerplate</title>
+    <title>Digital Force</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Page Description">
@@ -104,16 +104,16 @@
                 </div>
             </div>
             <script>
-            (function () {
-                //подготовим первый слайд к анимации текстового контента
-                var el = document.getElementsByClassName('b-hero__content')[0],
-                    className = 'js-slider-animate';
-                if (el.classList) {
-                    el.classList.add(className);
-                } else {
-                    el.className += ' ' + className;
-                }
-            })();
+                    (function () {
+                        //подготовим первый слайд к анимации текстового контента
+                        var el = document.getElementsByClassName('b-hero__content')[0],
+                            className = 'js-slider-animate';
+                        if (el.classList) {
+                            el.classList.add(className);
+                        } else {
+                            el.className += ' ' + className;
+                        }
+                    })();
             </script>
         </div>
         <!--About Us-->
@@ -122,6 +122,24 @@
         <section class="page__section js-section" id="services">
             <div class="g-container">
                 <h1 class="g-title">Our Services</h1>
+                <ul class="b-service">
+                    <li class="b-service__item">
+                        <figure class="b-service__inner">
+                            <div class="b-service__thumb"></div>
+                            <figcaption class="b-service__entry js-match-height">
+                                Creating right SEO-structure for your web-site from the very beginning
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="b-service__item">
+                        <figure class="b-service__inner">
+                            <div class="b-service__thumb"></div>
+                            <figcaption class="b-service__entry js-match-height">
+                                We work with CMS-systems: WordPress, OpenCart, Concrete5, custom solutions
+                            </figcaption>
+                        </figure>
+                    </li>
+                </ul>
             </div>
         </section>
         <!--/Services-->
