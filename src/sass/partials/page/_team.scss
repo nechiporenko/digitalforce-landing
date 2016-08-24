@@ -1,0 +1,54 @@
+﻿@import "../../modules/_base.scss";
+/*Team slider*/
+.b-team{
+    @include media($large){
+        margin:45px 0;
+    }
+    @include media($extra-large){
+        margin:65px 0;
+    }
+}
+.b-team__list{
+    @extend .g-clearlist;
+    @extend .g-clearfix;
+    line-height:1;
+}
+.b-team__item{
+    @extend .g-column;
+    width:190px;
+    margin-right:40px;
+}
+.b-team__inner{
+    &:hover{
+        .b-team__img{
+            @include filter(grayscale(20%));
+        }
+    }
+}
+.b-team__thumb{
+    @include size(190px);
+    margin:0 auto 20px;
+    position:relative;
+}
+.b-team__img{
+    @extend .g-img-centered;
+    border-radius:50%;
+    @include filter(grayscale(100%));
+    transition:-webkit-filter .3s linear;
+}
+.b-team__entry{
+    font-size:rem(14px);
+    color:$text-light-color;
+    line-height:1.4;
+    text-align:center;
+
+    p{
+        margin:0;
+    }
+}
+.b-team__title{
+    display:block;
+    margin:0;
+    font-size:rem(20px);
+    color:$title-color;
+}

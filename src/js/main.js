@@ -7,6 +7,7 @@
 // Выровняем блоки услуг по высоте
 // Загрузим изображения Портфолио и Команды
 // Анимация секций при скролле на десктопе
+// Слайдер Команда
 // Если браузер не знает о плейсхолдерах в формах
 jQuery(document).ready(function ($) {
     //
@@ -258,6 +259,89 @@ jQuery(document).ready(function ($) {
                 source = $el.data('img');
             $el.attr('src', source).removeClass('js-lazy-img');
         });
+    })();
+
+    //
+    // Слайдер Команда
+    //---------------------------------------------------------------------------------------
+    (function () {
+        var $slider = $('.js-team-slider'),
+            rtime, //переменные для пересчета ресайза окна с задержкой delta - будем показывать разное кол-во слайдов на разных разрешениях
+            timeout = false,
+            delta = 200,
+            method = {};
+
+        method.getSliderSettings = function () {
+            var setting,
+                settings1 = {
+                    maxSlides: 1,
+                },
+                settings2 = {
+                    maxSlides: 2,
+                },
+                settings3 = {
+                    maxSlides: 3,
+                },
+                settings4 = {
+                    maxSlides: 4,
+                },
+                settings5 = {
+                    maxSlides: 5,
+                },
+                common = {
+                    slideWidth: 190,
+                    slideMargin: 40,
+                    minSlides: 1,
+                    controls: false,
+                    pager: false,
+                    ticker: true,
+                    tickerHover: true,
+                    speed: 50000,
+                },
+                winW = $.viewportW(); //ширина окна
+
+            if (winW < 330) {
+                setting = $.extend(settings1, common);
+            };
+            if (winW >= 330 && winW < 420) {
+                setting = $.extend(settings2, common);
+            };
+            if (winW >= 420 && winW < 650) {
+                setting = $.extend(settings3, common);
+            };
+            if (winW >= 650 && winW < 1010) {
+                setting = $.extend(settings4, common);
+            };
+            if (winW >= 1010) {
+                setting = $.extend(settings5, common);
+            };
+            return setting;
+        };
+
+        method.reloadSliderSettings = function () {
+            $slider.reloadSlider($.extend(method.getSliderSettings(), { startSlide: $slider.getCurrentSlide() }));
+        };
+
+        method.endResize = function () {
+            if (new Date() - rtime < delta) {
+                setTimeout(method.endResize, delta);
+            } else {
+                timeout = false;
+                //ресайз окончен - пересчитываем
+                method.reloadSliderSettings();
+            }
+        };
+
+        method.startResize = function () {
+            rtime = new Date();
+            if (timeout === false) {
+                timeout = true;
+                setTimeout(method.endResize, delta);
+            }
+        };
+
+        $slider.bxSlider(method.getSliderSettings());//запускаем слайдер
+        $(window).bind('resize', method.startResize);//отслеживаем ресайз окна и пересчитываем кол-во слайдов
     })();
 
     //

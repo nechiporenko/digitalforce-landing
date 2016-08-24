@@ -4,7 +4,6 @@
 .page__section{
     padding:35px 0;
     @extend .g-resp-text;
-    min-height:600px; //удалить после отладки!
 
     @include media($tablet){
         padding:45px 0;
@@ -29,9 +28,9 @@
 
 @import "page/_hero.scss";//секция About Us
 @import "page/_services.scss";//секция Our Services`
-@import "page/_portfolio-grid.scss";
+@import "page/_portfolio-grid.scss";//секция Портфолио
+@import "page/_team.scss";//слайдер в секции Команда
 
-@import "page/_slider.scss";
 @import "page/_scroll-up.scss";
 
 
