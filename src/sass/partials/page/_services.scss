@@ -1,0 +1,81 @@
+﻿@import "../../modules/_base.scss";
+/*Service's list*/
+.b-service{
+    @extend .g-clearlist;
+    @extend .g-clearfix;
+    line-height:1;
+}
+.b-service__item{
+    @extend .g-column;
+
+    @include media($small){
+        @include span-columns(6);
+        @include omega(2n);
+    }
+
+    @include media($desktop){
+        @include omega-reset(2n);
+        @include span-columns(4);
+        @include omega(3n);
+    }
+}
+.b-service__inner{
+    margin-bottom:30px;
+    padding:30px 15px;
+    background:#fff;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    @extend .g-shadow-hover;
+
+    &:hover{
+        .b-service__icon{
+            path{
+                fill:$primary;
+            }
+        }
+    }
+}
+.b-service__thumb{
+    @include size(140px);
+    margin:0 auto;
+    position:relative;
+}
+
+.b-service__icon{
+    @extend .g-img-centered;
+
+    .cls-1{
+        fill-rule: evenodd;
+    }
+
+    path{
+        @extend .g-transition;
+        transition-property:fill;
+    }
+}
+
+.b-service__entry{
+    max-width:280px;
+    margin:0 auto;
+    font-size:rem(14px);
+    line-height:1.25;
+    text-align:center;
+    p{
+        margin:0;
+    }
+}
+
+
+@include media($tablet){
+    .b-service__inner{
+        padding:30px;
+    }
+    .b-service__entry{
+        font-size:rem(16px);
+    }
+}
+
+@include media($large){
+    .b-service{
+        margin:50px 0 10px;
+    }
+}

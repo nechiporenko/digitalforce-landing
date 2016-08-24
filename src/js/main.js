@@ -1,4 +1,12 @@
 ﻿// Custom scripts:
+
+// Меняем класс хидера и показываем кнопку скролла страницы
+// Покажем - спрячем моб.меню
+// Навигация по секциям
+// HERO slider
+// Выровняем блоки услуг по высоте
+// Загрузим изображения Портфолио и Команды
+// Анимация секций при скролле на десктопе
 // Если браузер не знает о плейсхолдерах в формах
 jQuery(document).ready(function ($) {
     //
@@ -165,7 +173,7 @@ jQuery(document).ready(function ($) {
     })();
 
     //
-    // HERO=slider
+    // HERO slider
     //---------------------------------------------------------------------------------------
     (function () {
         var $hero = $('.b-hero'),
@@ -175,7 +183,7 @@ jQuery(document).ready(function ($) {
             $content = $slider.find('.b-hero__content'),//будем анимировать при смене слайдов
             method = {};
 
-        method.hover = function () {//фикс
+        method.hover = function () {//ставим на паузу при наведении на пейджер и стрелки
             $hero.on('mouseenter', '.bx-pager, .bx-prev, .bx-next', function () {
                 slider.stopAuto();
             }).on('mouseleave', '.bx-pager, .bx-prev, .bx-next', function () {
@@ -191,13 +199,12 @@ jQuery(document).ready(function ($) {
             auto: true,
             pause: 8000,
             mode: 'fade',
-            autoHover: true,
             slideMargin: 10,
             nextText: '<i class="icon-right"></i>',
             prevText: '<i class="icon-left"></i>',
             onSliderLoad: function (currentIndex) {
                 $content.addClass('js-slider-animate').filter(':first').addClass(activeClass);//запускаем анимацию
-                method.hover();//фикс для слайдера
+                method.hover();//будем ставить слайдер на паузу
             },
             onSlideBefore: function ($slideElement) {
                 $content.removeClass(activeClass);
@@ -221,8 +228,79 @@ jQuery(document).ready(function ($) {
     // Выровняем блоки услуг по высоте
     //---------------------------------------------------------------------------------------
     (function () {
+        var $elems = $('.js-match-height');
+        function matchHeight() {
+            var max = 0;
+            $elems.each(function () {
+                var $el = $(this);
+                $el.removeAttr('style', 'height');
+                if ($el.outerHeight() > max) {
+                    max = $el.outerHeight();
+                };
+            });
+            $elems.height(max);
+        };
 
+        setTimeout(function () {
+            matchHeight();
+        }, 1000); //дадим 1сек. для загрузки шрифтов
+        $(window).on('resize', function () {
+            matchHeight();
+        });
     })();
+
+    //
+    // Загрузим изображения Портфолио и Команды
+    //---------------------------------------------------------------------------------------
+    (function () {
+        $('.js-lazy-img').each(function () {
+            var $el = $(this),
+                source = $el.data('img');
+            $el.attr('src', source).removeClass('js-lazy-img');
+        });
+    })();
+
+    //
+    // Анимация секций при скролле на десктопе
+    //---------------------------------------------------------------------------------------
+    function animateOnScroll() {
+        var $elems = $('.js-animate'),
+            $window = $(window);
+
+        //проверка при загрузке страницы
+        $elems.each(function () {
+            var $el = $(this);
+            if ($.inViewport($el)) {//если блок видим
+                animateElem($el);//анимируем
+            };
+        });
+
+        //проверка при скролле
+        $elems = $('.js-animate');//возьмем те что остались
+        $elems.each(function () {
+            var $el = $(this);
+            $window.bind('scroll', checkInView);
+
+            function checkInView() {
+                if ($.inY($el, -50)) {
+                    $window.unbind('scroll', checkInView);//отключили отслеживание
+                    animateElem($el);//анимировали
+                }
+            }
+        });
+
+        function animateElem(el) {
+            var animateClass = el.data('animate');
+            el.removeClass('js-animate').addClass('animated ' + animateClass);
+            setTimeout(function () {//уберем мусор
+                el.removeAttr('data-animate').removeClass('animated ' + animateClass);
+            }, 2000);
+        };
+    };
+
+    if ($.viewportW() > 992) {
+        animateOnScroll();
+    };
     
     //
     // Если браузер не знает о плейсхолдерах в формах
