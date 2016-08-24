@@ -622,25 +622,25 @@ input[type="color"], input[type="date"], input[type="datetime"], input[type="dat
   .g-col--one-half {
     width: 48.6486486486%;
   }
-  .g-col--one-third {
-    width: 31.5315315315%;
-  }
-  .g-col--two-thirds {
-    width: 65.7657657658%;
-  }
-  .g-col--one-fourth {
-    width: 22.972972973%;
-  }
-  .g-col--one-fifth {
-    width: 17.8378378378%;
-  }
-  .g-col--one-sixth {
-    width: 14.4144144144%;
-  }
+  /*.g-col--one-third{
+        width:(100%-$grid-gutter*2)/3;
+    }
+    .g-col--two-thirds{
+        width: 2*(100%-$grid-gutter*2)/3 + $grid-gutter;
+    }
+    .g-col--one-fourth{
+        width:(100% - $grid-gutter*3)/4;
+    }
+    .g-col--one-fifth{
+        width: (100%-$grid-gutter*4)/5;
+    }
+    .g-col--one-sixth{
+        width: (100%-$grid-gutter*5)/6;
+    }*/
 }
 
 /* Buttons */
-.g-btn,
+.g-btn, .b-contact__btn,
 .g-clearbutton,
 .btn-more,
 .b-modal__close,
@@ -656,7 +656,7 @@ input[type="color"], input[type="date"], input[type="datetime"], input[type="dat
   white-space: nowrap;
 }
 
-.g-btn:active,
+.g-btn:active, .b-contact__btn:active,
 .g-clearbutton:active,
 .btn-more:active,
 .b-modal__close:active,
@@ -671,30 +671,32 @@ input[type="color"], input[type="date"], input[type="datetime"], input[type="dat
   padding: 0;
 }
 
-.g-btn {
+.g-btn, .b-contact__btn {
   height: 54px;
   line-height: 54px;
   padding: 0 15px;
-  color: #8ace38;
+  color: #000;
   font-size: 1.0625rem;
   box-shadow: inset 0 0 2px 1px #8ace38;
   border-radius: 3px;
+  background: none;
+  border: none;
 }
 
-.g-btn:hover, .g-btn:active {
+.g-btn:hover, .b-contact__btn:hover, .g-btn:active, .b-contact__btn:active {
   color: #fff;
   background: #8ace38;
-  box-shadow: 0 1px 2px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.15);
 }
 
-.g-btn:disabled {
+.g-btn:disabled, .b-contact__btn:disabled {
   background: grey;
   box-shadow: none;
   transform: none;
 }
 
 @media screen and (min-width: 62em) {
-  .g-btn {
+  .g-btn, .b-contact__btn {
     height: 58px;
     line-height: 58px;
     padding: 0 75px;
@@ -769,12 +771,12 @@ textarea {
   display: inline-block;
   vertical-align: middle;
   width: 100%;
-  margin-bottom: 20px;
-  padding: 6px 10px;
-  background-color: #fff;
+  margin-bottom: 15px;
+  padding: 10px 20px;
+  background-color: #f4f4f6;
   border: 1px solid #f4f4f6;
   border-radius: 0;
-  color: #000;
+  font-size: 1.0625rem;
   box-shadow: none;
   box-sizing: border-box;
 }
@@ -782,29 +784,29 @@ textarea {
 .g-input::-webkit-input-placeholder,
 .g-select::-webkit-input-placeholder,
 .g-textarea::-webkit-input-placeholder {
-  color: #888888;
-  text-overflow: ellipsis;
+  color: #737373;
+  opacity: 1;
 }
 
 .g-input::-moz-placeholder,
 .g-select::-moz-placeholder,
 .g-textarea::-moz-placeholder {
-  color: #888888;
-  text-overflow: ellipsis;
+  color: #737373;
+  opacity: 1;
 }
 
 .g-input:-moz-placeholder,
 .g-select:-moz-placeholder,
 .g-textarea:-moz-placeholder {
-  color: #888888;
-  text-overflow: ellipsis;
+  color: #737373;
+  opacity: 1;
 }
 
 .g-input:-ms-input-placeholder,
 .g-select:-ms-input-placeholder,
 .g-textarea:-ms-input-placeholder {
-  color: #888888;
-  text-overflow: ellipsis;
+  color: #737373;
+  opacity: 1;
 }
 
 .g-input:hover, .g-input:focus,
@@ -887,11 +889,11 @@ textarea {
 
 .g-input,
 .g-select {
-  height: 40px;
+  height: 54px;
 }
 
 .g-textarea {
-  min-height: 100px;
+  min-height: 112px;
 }
 
 .g-label {
@@ -917,6 +919,7 @@ input[type="radio"] {
 
 .g-fieldset {
   position: relative;
+  margin: 0;
 }
 
 .g-fieldset__msg {
@@ -926,6 +929,8 @@ input[type="radio"] {
   left: 0;
   bottom: 0;
   font-style: italic;
+  font-family: "ProximaNova-LightIt";
+  letter-spacing: 0.03125rem;
   display: none;
 }
 
@@ -1144,7 +1149,8 @@ input[type="radio"] {
 
 .b-header__btn:hover, .b-header__btn:active, .b-header__btn:focus {
   background: #8ace38;
-  color: #fff;
+  color: #fff !important;
+  box-shadow: inset 0 0 2px 1px #8ace38;
 }
 
 .b-header__btn--order {
@@ -1166,6 +1172,12 @@ input[type="radio"] {
     line-height: 41px;
     font-size: 1.125rem;
     border-radius: 41px;
+    box-shadow: inset 0 0 2px 1px #fff;
+    color: #fff;
+  }
+  .scrolled .b-header__btn--order {
+    color: #8ace38;
+    box-shadow: inset 0 0 2px 1px #8ace38;
   }
 }
 
@@ -1891,6 +1903,35 @@ input[type="radio"] {
   margin: 0;
   font-size: 1.25rem;
   color: #000;
+}
+
+/*Contact form*/
+.b-contact {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 75em) {
+  .b-contact {
+    margin: 45px auto;
+  }
+}
+
+.b-contact__btn {
+  margin: 5px 0;
+}
+
+.b-contact__msg {
+  display: block;
+  font-size: 0.9375rem;
+}
+
+@media screen and (min-width: 40em) {
+  .b-contact__msg {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+  }
 }
 
 /*Scroll-up button*/

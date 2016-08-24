@@ -399,6 +399,31 @@
         <section class="page__section page__section--alt js-section" id="contacts">
             <div class="g-container">
                 <h4 class="g-title">Contact us</h4>
+                <p class="g-text-center">Complete the form and we will contact you:</p>
+                <form class="b-contact">
+                    <div class="g-row">
+                        <div class="g-col g-col--one-half">
+                            <fieldset class="g-fieldset">
+                                <label class="g-visuallyhidden">Your Name</label>
+                                <input type="text" class="g-input js-validate" placeholder="Your Name *" required data-validate="required" />
+                                <span class="g-fieldset__msg">Please fill this field!</span>
+                            </fieldset>
+                        </div>
+                        <div class="g-col g-col--one-half">
+                            <fieldset class="g-fieldset">
+                                <label class="g-visuallyhidden">Email</label>
+                                <input type="text" class="g-input js-validate" placeholder="Email *" required data-validate="email" />
+                                <span class="g-fieldset__msg">Please enter correct email!</span>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="g-fieldset">
+                        <label class="g-visuallyhidden">Message</label>
+                        <textarea class="g-textarea" placeholder="Message"></textarea>
+                    </div>
+                    <button type="submit" class="b-contact__btn">Send message</button>
+                    <span class="b-contact__msg">We will contact you shortly</span>
+                </form>
             </div>
         </section>
         <!--/Portfolio-->

@@ -20,18 +20,18 @@ textarea {
     display:inline-block;
     vertical-align:middle;
     width:100%;
-    margin-bottom: $project-line-height;
-    padding:6px 10px;
-    background-color: #fff;
+    margin-bottom: 15px;
+    padding:10px 20px;
+    background-color: $border-color;
     border: 1px solid $border-color;
     border-radius:$border-radius;
-    color:$text-color;
+    font-size:rem(17px);
     box-shadow: none;
     box-sizing: border-box;
 
     @include placeholder{
-        color:#888888;
-        text-overflow:ellipsis;
+        color:$placeholder-color;
+        opacity:1;
     }
 
     &:hover,
@@ -62,11 +62,11 @@ textarea {
 
 .g-input,
 .g-select{
-    height:2*$project-line-height;
+    height:54px;
 }
 
 .g-textarea{
-    min-height:5*$project-line-height;
+    min-height:112px;
 }
 
 .g-label{
@@ -91,6 +91,7 @@ input[type="radio"] {
 
 .g-fieldset{
     position:relative;
+    margin:0;
 }
 .g-fieldset__msg{
     font-size:rem(10px);
@@ -98,6 +99,8 @@ input[type="radio"] {
     position:absolute;
     left:0; bottom:0;
     font-style:italic;
+    font-family:$font-italic;
+    letter-spacing:rem(.5px);
     display:none;
 
     .error > &{

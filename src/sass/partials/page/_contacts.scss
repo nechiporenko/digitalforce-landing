@@ -1,0 +1,24 @@
+﻿@import "../../modules/_base.scss";
+/*Contact form*/
+.b-contact{
+    max-width:640px;
+    margin:0 auto;
+
+    @include media($large){
+        margin:45px auto;
+    }
+}
+.b-contact__btn{
+    @extend .g-btn;
+    margin:5px 0;
+}
+.b-contact__msg{
+    display:block;
+    font-size:rem(15px);
+
+    @include media($small){
+        display:inline-block;
+        vertical-align:middle;
+        margin-left:10px;
+    }
+}
