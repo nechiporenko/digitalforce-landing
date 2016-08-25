@@ -329,7 +329,7 @@ jQuery(document).ready(function ($) {
                     controls: false,
                     pager: false,
                     ticker: true,
-                    tickerHover: true,
+                    //tickerHover: true,
                     speed: 50000,
                 },
                 winW = $.viewportW(); //ширина окна

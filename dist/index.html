@@ -400,7 +400,7 @@
             <div class="g-container">
                 <h4 class="g-title">Contact us</h4>
                 <p class="g-text-center">Complete the form and we will contact you:</p>
-                <form class="b-contact">
+                <form class="b-contact js-animate" data-animate="fade-in">
                     <div class="g-row">
                         <div class="g-col g-col--one-half">
                             <fieldset class="g-fieldset">
@@ -426,7 +426,7 @@
                 </form>
             </div>
         </section>
-        <!--/Portfolio-->
+        <!--/Contacts-->
 
         <!--Mobile Menu-->
         <nav class="page__panel js-mmenu">
@@ -459,9 +459,60 @@
 	<!--/MAIN CONTENT-->
 
     <!--FOOTER-->
-        <footer class="b-footer">
-        <div class="g-container">
-            ...Footer content...
+    <footer class="b-footer">
+        <div class="b-footer__main" itemscope itemtype="http://schema.org/LocalBusiness">
+            <div class="b-footer__column js-animate" itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress" data-animate="fade-in-left">
+                <span class="b-footer__title">Our office in Ukraine:</span>
+                <p><span itemprop="postalCode">04073</span> <span itemprop="addressLocality">Kyiv</span> <span itemprop="streetAddress">Mosckovskiy av. 9</span></p>
+                <p>(Business Center "Forum Park Plaza"</p>
+                <p>Unit 4B, office 5-102)</p>
+                <meta itemprop="addressCountry" content="Ukraine">
+            </div>
+            <div class="b-footer__column js-animate" data-animate="fade-in-up">
+                <span class="b-footer__title g-text-center">Social networks:</span>
+                <ul class="f-social">
+                    <li class="f-social__item">
+                        <a href="#" target="_blank" rel="nofollow" class="f-social__link">
+                            <i class="icon-facebook"></i>
+                        </a>
+                    </li>
+                    <li class="f-social__item">
+                        <a href="#" target="_blank" rel="nofollow" class="f-social__link">
+                            <i class="icon-twitter"></i>
+                        </a>
+                    </li>
+                    <li class="f-social__item">
+                        <a href="#" target="_blank" rel="nofollow" class="f-social__link">
+                            <i class="icon-google-plus"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="b-footer__column js-animate" data-animate="fade-in-right">
+                <div class="b-footer__right">
+                    <span class="b-footer__title">Connect with us:</span>
+                    <meta itemprop="name" content="Digital Force">
+                    <meta itemprop="description" content="Web-studio">
+                    <p>
+                        <a href="tel:+380443535363" class="b-footer__link">
+                            <span itemprop="telephone">+38 044 353-53-63</span>
+                        </a>
+                    </p>
+                    <p>
+                        <a href="tel:+380679115549" class="b-footer__link">
+                            <span itemprop="telephone">+38 067 911-55-49</span>
+                        </a>
+                    </p>
+                    <p>
+                        <a href="mailto:info@digitalforce.ua" class="b-footer__link">
+                            <span itemprop="email">info@digitalforce.ua</span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="b-footer__sole">
+            © 2016 Digital Force
         </div>
     </footer>
     <!--/FOOTER-->

@@ -1,5 +1,38 @@
 @import "../modules/base";
 
 /*Site Footer*/
+.b-footer{
+    padding:30px 0;
+    text-align:center;
+
+    @include media($tablet){
+        text-align:left;
+    }
+
+    @include media($desktop){
+        padding:50px 0;
+    }
+
+    @include media($large){
+        padding:65px 0;
+    }
+
+    @include media($extra-large){
+        padding:100px 0;
+    }
+}
+
+.b-footer__main,
+.b-footer__sole{
+    @extend .g-container;
+    max-width:950px;
+    font-size:rem(14px);
+    line-height:1.4286;
+
+    p{
+        margin:0;
+    }
+}
 
 @import "footer/_footer-main";
+@import "footer/_social-links.scss";

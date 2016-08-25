@@ -1,3 +1,42 @@
 @import "../../modules/base";
 
 /*Footer Main Part*/
+.b-footer__main{
+    margin-bottom:20px;
+}
+.b-footer__column{
+    @extend .g-column;
+    margin-bottom:20px;
+
+    @include media($tablet){
+        @include span-columns(4);
+        @include omega(3n);
+        margin-bottom:0;
+    }
+}
+
+.b-footer__right{//контент правой колонки - выровняем по правому краю на планшетах и выше
+    @include media($tablet){
+        float:right;
+    }
+}
+
+.b-footer__title{
+    display:block;
+    margin-bottom:5px;
+    font-family:$font-bold;
+    font-weight:700;
+    font-size:rem(18px);
+    line-height:1.2;
+}
+
+.b-footer__link{
+    color:$text-color;
+    text-decoration:none;
+
+    &:hover,
+    &:active{
+        color:$primary;
+        text-decoration:underline;
+    }
+}

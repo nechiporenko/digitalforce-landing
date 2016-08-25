@@ -1,0 +1,23 @@
+﻿@import "../../modules/_base.scss";
+/*Footer Social Links*/
+.f-social{
+    @extend .g-clearlist;
+    font-size:0;
+    text-align:center;
+}
+.f-social__item{
+    display:inline-block;
+    vertical-align:top;
+    margin:0 7px;
+    font-size:rem(32px);
+}
+
+.f-social__link{
+    text-decoration:none;
+    color:#b6b6b6;
+
+    &:hover,
+    &:active{
+        color:$primary;
+    }
+}
