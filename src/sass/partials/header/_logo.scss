@@ -5,14 +5,31 @@
     float:left;
     width:104px;
     height:36px;
-    @include hide-text();
-    background-image:url(../img/logo.png);
-    background-repeat:no-repeat;
-    background-size:100% 100%;
+
+    svg{
+        width:100%;
+        height:auto;
+    }
+    path{
+        @extend .g-transition;
+        transition-property:fill;
+
+        &.lgw{
+            fill:$text-color;
+        }
+    }
 
     @include media($desktop){
         width:164px;
         height:57px;
-        background-size:unset;
+
+        path{
+            &.lgw{
+                fill:#fff;
+            }
+            .scrolled &.lgw{
+                fill:$text-color;
+            }
+        }
     }
 }

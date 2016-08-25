@@ -83,14 +83,9 @@
 
 .no-flexbox{
     .b-hero__wrapper{
-        display:table;
+        height:auto;
         width:100%;
-        table-layout:fixed;
-    }
-
-    .b-hero__content{
-        display:table-cell;
-        vertical-align:middle;
+        @extend .g-valign;
     }
 }
 

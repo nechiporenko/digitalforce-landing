@@ -97,15 +97,11 @@
 }
 
 .no-flexbox{
-    .b-folio__entry{
-        display:table;
-        table-layout:fixed;
-    }
     .b-folio__caption{
-        display:table-cell;
-        vertical-align:middle;
+        @extend .g-valign;
     }
 }
+
 
 .b-folio__title{
     display:block;
