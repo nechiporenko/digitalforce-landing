@@ -1,8 +1,7 @@
-﻿<section class="page__section page__section--alt js-section" id="contacts">
-            <div class="g-container">
-                <h4 class="g-title">Contact us</h4>
-                <p class="g-text-center">Complete the form and we will contact you:</p>
-                <form class="b-contact js-animate" data-animate="fade-in" id="contact_form">
+﻿<div class="b-modal" id="request">
+            <div class="b-modal__content">
+                <form class="b-contact" id="request_form">
+                    <h5 class="g-subtitle">Leave request</h5>
                     <div class="g-row">
                         <div class="g-col g-col--one-half">
                             <fieldset class="g-fieldset">
@@ -20,12 +19,26 @@
                         </div>
                     </div>
                     <div class="g-fieldset">
-                        <label class="g-visuallyhidden">Message</label>
-                        <textarea class="g-textarea" placeholder="Message"></textarea>
+                        <fieldset class="g-fieldset">
+                            <label class="g-visuallyhidden">Message</label>
+                            <textarea class="g-textarea js-validate" placeholder="Message *" required data-validate="required"></textarea>
+                            <span class="g-fieldset__msg">Please fill this field!</span>
+                        </fieldset>
                     </div>
                     <button type="submit" class="b-contact__btn">Send message</button>
                     <span class="b-contact__msg">We will contact you shortly</span>
                 </form>
             </div>
-        </section>
-        <!--/Contacts-->
+            <button type="button" class="b-modal__close"><i class="icon-close"></i></button>
+        </div>
+
+        <div class="b-modal" id="thanks">
+            <div class="b-modal__content">
+                <p>&nbsp;</p>
+                <h6 class="g-subtitle g-text-center">
+                    Thanks, Your message has been send.
+                </h6>
+                <button type="button" class="b-modal__close"><i class="icon-close"></i></button>
+            </div>
+        </div>
+        <!--/modals-->

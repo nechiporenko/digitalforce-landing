@@ -1,15 +1,84 @@
-﻿// Custom scripts:
+﻿//Modal windows:
+(function ($) {
+    //пример вызова:
+    //$('#modal_id').popup('open')  - открыть
+    //$('#modal_id').popup('close') - закрыть
 
+    $.fn.popup = function (action) {
+        var modal_id = this.selector, //id окна
+            $modal = $(modal_id), //контент окна
+            $body = $('body'),
+            $window = $(window),
+            activeClass = 'active', //класс для видимого окна
+            method = {};
+
+        method.center = function () {//центрируем окно
+            var top, left;
+            top = Math.max($window.height() - $modal.outerHeight(), 0) / 2;
+            left = Math.max($window.width() - $modal.outerWidth(), 0) / 2;
+
+            $modal.css({
+                top: top + $window.scrollTop(),
+                left: left + $window.scrollLeft()
+            });
+        };
+
+        method.addOverlay = function () {//добавляем оверлей
+            $body.append('<div id="overlay" class="page__overlay"></div>');
+            $('#overlay').bind('click', method.close);//закроем окно при клике на оверлей
+        };
+
+        method.removeOverlay = function () {//удалим оверлей после закрытия окна
+            $('#overlay').unbind('click', method.close).remove();
+        };
+
+        method.open = function () {//открываем
+            method.center();//отцентрировали
+            $window.bind('resize.modal', method.center);//при ресайзе - пересчитаем положение окна
+            method.addOverlay();//добавили оверлей
+            $modal.addClass(activeClass);//показали окно
+        };
+
+        method.close = function () {//закрываем окно
+            $modal.removeClass(activeClass);
+            method.removeOverlay();
+            $window.unbind('resize.modal');
+        };
+
+        $modal.on('click', '.b-modal__close', method.close); //закроем окно при клике по кнопке
+
+        if (action === 'open' && $modal.length) {//открываем
+            method.open();
+        };
+
+        if (action === 'close') {//закрываем
+            method.close();
+        };
+    };
+
+}(jQuery));
+
+
+// Custom scripts:
+//
+// Откроем модальное окно при клике на кнопку в хидере
 // Меняем класс хидера и показываем кнопку скролла страницы
 // Покажем - спрячем моб.меню
 // Навигация по секциям
 // HERO slider
 // Выровняем блоки услуг по высоте
 // Загрузим изображения Портфолио и Команды
-// Анимация секций при скролле на десктопе
 // Слайдер Команда
+// Анимация секций при скролле на десктопе
 // Если браузер не знает о плейсхолдерах в формах
 jQuery(document).ready(function ($) {
+    //
+    // Откроем модальное окно при клике на кнопку в хидере
+    //---------------------------------------------------------------------------------------
+    $('.b-header').on('click', '.js-modal', function () {
+        $('#request').popup('open');
+    });
+
     //
     // Меняем класс хидера и показываем кнопку скролла страницы
     //---------------------------------------------------------------------------------------

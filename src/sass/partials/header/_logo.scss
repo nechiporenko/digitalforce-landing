@@ -6,28 +6,34 @@
     width:104px;
     height:36px;
 
-    svg{
-        width:100%;
-        height:auto;
-    }
-    path{
-        @extend .g-transition;
-        transition-property:fill;
-
-        &.lgw{
-            fill:$text-color;
-        }
-    }
-
     @include media($desktop){
         width:164px;
         height:57px;
+    }
+}
 
-        path{
-            &.lgw{
-                fill:#fff;
-            }
-            .scrolled &.lgw{
+.b-header__img{//svg
+    width:100%;
+    height:auto;
+
+    .lgw, .lgg{
+        @extend .g-transition;
+        transition-property:fill;
+    }
+
+    .lgw {
+        fill: $text-color;
+    }
+
+    .lgg {
+        fill: $primary;
+    }
+
+    @include media($desktop){
+        .lgw{
+            fill:#fff;
+
+            .scrolled &{
                 fill:$text-color;
             }
         }
