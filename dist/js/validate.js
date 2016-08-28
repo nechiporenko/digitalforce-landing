@@ -1,9 +1,12 @@
 ﻿jQuery(document).ready(function ($) {
     //валидируем поля формы с классом js-validate
     //параметры валидации передаем через data-атрибуты data-validate
+    //возможны 3 варианта:
     //required - поле обязательно для заполнения
     //phone - тел.номер (обязательно для заполнения)
     //email - email (обязательно для заполнения)
+    //для select (required) - проверяем значения value. Если value==='label' - скрипт вернет ошибку
+
     var Validate = (function () {
         var method = function (form) {
             this.frm = form;
@@ -108,11 +111,13 @@
             $(el).parents('.g-fieldset').removeClass('error');
         };
 
-        method.prototype.clearForm = function () {//очистим поля (input, textarea)
+        method.prototype.clearForm = function () {//очистим поля формы
             for (var i = 0; i < this.count; i++) {
                 var elem_type = this.inputs[i].tagName.toLowerCase();
-                if (elem_type === 'input'  || elem_type === 'textarea') {
+                if (elem_type === 'input'  || elem_type === 'textarea') {//если input, textarea
                     this.inputs[i].value = '';
+                } else {//select
+                    this.inputs[i].value = 'label';
                 }
             };
         };
