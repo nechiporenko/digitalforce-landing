@@ -1862,6 +1862,28 @@ input[type="radio"] {
 }
 
 /*Team slider*/
+.b-team .bx-controls-direction a {
+  color: #f4f4f6;
+  display: block;
+  top: 190px;
+}
+
+@media screen and (min-width: 62em) {
+  .b-team .bx-controls-direction a {
+    top: 94px;
+    color: #000;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .b-team .bx-prev {
+    left: -50px;
+  }
+  .b-team .bx-next {
+    right: -50px;
+  }
+}
+
 @media screen and (min-width: 75em) {
   .b-team {
     margin: 45px 0;
@@ -2179,7 +2201,7 @@ input[type="radio"] {
   text-decoration: none;
   z-index: 60;
   opacity: .6;
-  transition-property: opacity;
+  transition-property: opacity, color;
   display: none;
 }
 

@@ -92,7 +92,7 @@ $loader:   '../img/loader.gif';
     text-decoration:none;
 	z-index: 60;
     opacity:.6;
-	transition-property:opacity;
+	transition-property:opacity, color;
 	@extend .g-transition;
     display:none;
 	

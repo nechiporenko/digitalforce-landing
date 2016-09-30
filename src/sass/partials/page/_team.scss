@@ -1,6 +1,26 @@
 ﻿@import "../../modules/_base.scss";
 /*Team slider*/
 .b-team{
+    .bx-controls-direction a{
+        color:$border-color;
+        display:block;
+        top:190px;
+
+        @include media($desktop){
+            top:94px;
+            color:$text-color;
+        }
+    }
+
+    @include media(min-width 992px max-width 1199px){
+        .bx-prev {
+	        left: -50px;
+        }
+        .bx-next {
+	        right: -50px;
+        }
+    }
+
     @include media($large){
         margin:45px 0;
     }

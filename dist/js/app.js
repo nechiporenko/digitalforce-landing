@@ -372,9 +372,10 @@ jQuery(document).ready(function ($) {
             rtime, //переменные для пересчета ресайза окна с задержкой delta - будем показывать разное кол-во слайдов на разных разрешениях
             timeout = false,
             delta = 200,
+            pageWidth = $.viewportW(), //будем хранить текущую ширину окна
             method = {};
 
-        method.getSliderSettings = function () {
+        method.getSliderSettings = function (winW) {
             var setting,
                 settings1 = {
                     maxSlides: 1,
@@ -395,33 +396,36 @@ jQuery(document).ready(function ($) {
                     slideWidth: 190,
                     slideMargin: 40,
                     minSlides: 1,
-                    controls: false,
+                    moveSlides: 1,
+                    controls: true,
                     pager: false,
-                    ticker: true,
-                    speed: 50000,
-                },
-                winW = $.viewportW(); //ширина окна
+                    nextText: '<i class="icon-right"></i>',
+                    prevText: '<i class="icon-left"></i>',
+                    auto: true,
+                    pause: 10000,
+                    autoHover: true,
+                };
 
-            if (winW < 330) {
+            if (winW < 450) {
                 setting = $.extend(settings1, common);
             };
-            if (winW >= 330 && winW < 420) {
+            if (winW >= 450 && winW < 768) {
                 setting = $.extend(settings2, common);
             };
-            if (winW >= 420 && winW < 650) {
+            if (winW >= 768 && winW < 992) {
                 setting = $.extend(settings3, common);
             };
-            if (winW >= 650 && winW < 1010) {
+            if (winW >= 992 && winW < 1200) {
                 setting = $.extend(settings4, common);
             };
-            if (winW >= 1010) {
+            if (winW >= 1200) {
                 setting = $.extend(settings5, common);
             };
             return setting;
         };
 
-        method.reloadSliderSettings = function () {
-            $slider.reloadSlider($.extend(method.getSliderSettings(), { startSlide: $slider.getCurrentSlide() }));
+        method.reloadSliderSettings = function (winW) {
+            $slider.reloadSlider($.extend(method.getSliderSettings(winW), { startSlide: $slider.getCurrentSlide() }));
         };
 
         method.endResize = function () {
@@ -430,7 +434,14 @@ jQuery(document).ready(function ($) {
             } else {
                 timeout = false;
                 //ресайз окончен - пересчитываем
-                method.reloadSliderSettings();
+
+                var winW = $.viewportW(); //берем текущую ширину окна
+                if (winW === pageWidth) { //если ширина окна не изменилась
+                    return false;
+                } else {
+                    pageWidth = winW; //кэшируем
+                    method.reloadSliderSettings(winW); //и перезагружаем слайдер
+                }
             }
         };
 
@@ -442,8 +453,9 @@ jQuery(document).ready(function ($) {
             }
         };
 
-        $slider.bxSlider(method.getSliderSettings());//запускаем слайдер
+        $slider.bxSlider(method.getSliderSettings(pageWidth));//запускаем слайдер
         $(window).bind('resize', method.startResize);//отслеживаем ресайз окна и пересчитываем кол-во слайдов
+
     })();
 
     //
@@ -462,7 +474,7 @@ jQuery(document).ready(function ($) {
         });
 
         //проверка при скролле
-        $elems = $('.js-animate');//возьмем те что остались
+        $elems = $('.js-animate');//возьмем те что остались после первой проверки
         $elems.each(function () {
             var $el = $(this);
             $window.bind('scroll', checkInView);
@@ -474,6 +486,7 @@ jQuery(document).ready(function ($) {
                 }
             }
         });
+        
 
         function animateElem(el) {
             var animateClass = el.data('animate');
